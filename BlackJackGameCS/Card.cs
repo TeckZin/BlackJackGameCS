@@ -4,9 +4,9 @@ namespace BlackJackGameCS;
 
 public class Card
 {
-    private string suit { get; }
-    private string rank { get;  }
-    private int value { get;  }
+    public string suit { get; }
+    public string rank { get;  }
+    public int value { get;  }
     private string consoleLog; 
     
     
