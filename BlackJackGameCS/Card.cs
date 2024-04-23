@@ -7,17 +7,18 @@ public class Card
     public string suit { get; }
     public string rank { get;  }
     public int value { get;  }
+    
+    public string visual { get;  }
     private string consoleLog; 
     
     
     public Card(string suit, string rank, int value)
     {
-       this.suit = suit;
-       this.rank = rank;
-       this.value = value;
 
-
-
+        this.value = value;
+        this.suit = suit;
+        this.rank = rank;
+        this.visual = rank.ToString() + suit;
 
     }
 

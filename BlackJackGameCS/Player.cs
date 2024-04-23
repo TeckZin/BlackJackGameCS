@@ -6,8 +6,8 @@ namespace BlackJackGameCS;
 public class Player
 {
 
-    private int playerNum { get; set;  }
-    private List<Card> hand { get; set;  }
+    public int playerNum { get; set;  }
+    public List<Card> hand { get; set;  }
 
 
     private List<int> totalPosssiblities;
@@ -17,30 +17,56 @@ public class Player
         
         this.playerNum = playerNum;
         this.totalPosssiblities = new List<int>();
-        this.totalPosssiblities.Append(0);
+        this.totalPosssiblities.Add(0);
+        this.hand = new List<Card>();
 
 
     }
 
 
-    public bool addCard(Card card)
+    public void addCard(Card card)
     {
-        var enumerable = this.hand.Append(card);
-        if (enumerable != null)
+        this.hand.Add(card);
+    }
+
+
+    private void checkHandValue()
+    {
+        
+
+        List<int> newTotalPosssiblities = new List<int>();
+        foreach (Card card in hand)
         {
-            return true;
-            
+            if (newTotalPosssiblities.Count == 0)
+            {
+                newTotalPosssiblities.Add(card.value);
+            }
+            else
+            {
+                if (card.value != 1)
+                {
+                    for (int i = 0; i < newTotalPosssiblities.Count; i++)
+                    {
+                        int x = newTotalPosssiblities[i];
+                        newTotalPosssiblities[i] = x + card.value;
+                        
+                    } 
+                }
+                else
+                {
+                    
+                    for (int i = 0; i < newTotalPosssiblities.Count; i++)
+                    {
+                        int x = newTotalPosssiblities[i];
+                        newTotalPosssiblities[i] = x + card.value;
+                        newTotalPosssiblities.Add(card.value + 11);
+
+                    }                                            
+                }
+            }
         }
 
-        return false; 
-    }
-
-
-    private int checkHandValue()
-    {
-
-        return 0;
-
+        totalPosssiblities = newTotalPosssiblities;
     }
     
     
